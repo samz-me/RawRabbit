@@ -16,7 +16,7 @@ namespace RawRabbit.Enrichers.Polly.Middleware
 		{
 			var policy = context.GetPolicy(PolicyKeys.MessageAcknowledge);
 			var result = await policy.ExecuteAsync(
-				action: () => Task.FromResult(base.AcknowledgeMessageAsync(context)),
+				action: (x) => Task.FromResult(base.AcknowledgeMessageAsync(context)),
 				contextData: new Dictionary<string, object>
 				{
 					[RetryKey.PipeContext] = context

@@ -23,7 +23,7 @@ namespace RawRabbit.Enrichers.Polly.Middleware
 		{
 			var policy = context.GetPolicy(PolicyKeys.BasicPublish);
 			var policyTask = policy.ExecuteAsync(
-				action: () =>
+				action: (x) =>
 				{
 					base.BasicPublish(channel, exchange, routingKey, mandatory, basicProps, body, context);
 					return Task.FromResult(true);

@@ -5,9 +5,9 @@ namespace RawRabbit.Enrichers.Polly
 {
 	public static class PipeContextExtensions
 	{
-		public static Policy GetPolicy(this IPipeContext context, string policyName = null)
+		public static AsyncPolicy GetPolicy(this IPipeContext context, string policyName = null)
 		{
-			var fallback = context.Get<Policy>(PolicyKeys.DefaultPolicy);
+			var fallback = context.Get<AsyncPolicy>(PolicyKeys.DefaultPolicy);
 			return context.Get(policyName, fallback);
 		}
 
